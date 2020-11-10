@@ -8,3 +8,13 @@ before_install:
 
 script:
   - docker run -e CI=true thanosfil/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-us-east-2-193134548130"
+  backet_path: "docker-react"
+  on:
+    branch: master
